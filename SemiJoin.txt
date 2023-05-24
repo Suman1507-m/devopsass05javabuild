@@ -1,0 +1,69 @@
+import java.sql.*;
+
+import java.util.*;
+
+class SemiJoin{
+
+public static void main(String args){ 
+//Scanner sc= new Scanner(System.in);
+
+//System.out.println("Enter table name:\n");
+ //String tname=sc.nextLine();
+
+//System.out.println("Enter dept_id :\n");
+ Wint id=sc.nextInt();
+
+try{
+
+Class.forName("oracle.jdbc.OracleDriver");
+
+String url="jdbc:oracle:thin:finalbtech23/finalbtech23@192.168.1.75:1521:orcl";
+
+Connection con=DriverManager.getConnection(url, "finalbtech65", "finalbtech65"); 
+Statement stmt=con.createStatement();
+
+ResultSet rs1=stmt.executeQuery("drop table temp1");
+
+ResultSet rs2=stmt.executeQuery("Create table temp1 as select s.user_id from page4 s,fbuser c where s.user_id=c.user_id"); 
+ResultSet rs3=stmt.executeQuery("select * from temp1");
+
+System.out.println("temp1 table as below:");
+
+while(rs3.next())
+{
+System.out.println(rs3.getInt(1));
+
+}
+
+ResultSet rs11=stmt.executeQuery("drop table temp2");
+
+ResultSet rs22=stmt.executeQuery("Create table temp2 as select t.user_id, country from page4 t, fbuser c where t.user_id=c.user_id");
+ResultSet rs11=stmt.executeQuery("drop table temp2");
+
+
+
+ResultSet rs33=stmt.executeQuery("select * from temp2");
+ System.out.println("temp2 table as below:");
+
+while(rs33.next())
+{
+System.out.println(rs33.getInt(1)+" "+rs33.getInt(2));
+}
+ResultSet rs111=stmt.executeQuery("drop table output");
+
+ResultSet rs222=stmt.executeQuery("create table output as select tt.user_id,tt.name,tt.phone,tt.address,s.country from fbuser tt,page4 s where tt.user_id=s.user_id");
+ ResultSet rs333=stmt.executeQuery("select * from output");
+
+System.out.println("output table as below:");
+
+
+while(rs333.next())
+{
+System.out.println(rs333.getint(1)+" "+rs333.getString(2)+" "+rs333.getInt(3)+" "+rs333.getString(4)+" "+rs333.getInt(5));
+}
+con.close();
+}
+catch(Exception e){System.out.println(e);
+}
+}
+}

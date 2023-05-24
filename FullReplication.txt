@@ -1,0 +1,51 @@
+import java.sql.*;
+import java.util.*;
+
+class FullReplication
+{
+	public static void main(String args[])
+	{
+	Scanner sc= new Scanner(System.in);	
+	try{
+	Class.forName("oracle.jdbc.driver.OracleDriver");  
+  
+ 
+	Connection con=DriverManager.getConnection("jdbc:oracle:thin:@DESKTOP-QSNCN8S:1521:orcl","system","a1234"); 
+  
+	Statement stmt=con.createStatement(); 
+	Statement stmt1=con1.createStatement();
+	Statement stmt2=con2.createStatement();
+
+	ResultSet res = stmt1.executeQuery("select * from fbuser");
+	
+	int count = 0;
+	while(res.next())
+	{
+		count++;
+		int user_id= res.getInt(1);
+		String name = res.getString(2);
+		int phone = res.getInt(3);
+		String address = res.getString(4);
+		
+		
+		String query = String.format("insert into new values('%d',%s,%d,'%s')",user_id ,name ,phone ,address);
+		
+		stmt2.executeUpdate(query);
+	}
+	ResultSet res1 = stmt2.executeQuery("select * from fbuser");
+	System.out.println("Data Copied from Oracle Sql to MySql : "+count);
+	System.out.println("\nmyDB database - employee table:\n");
+	System.out.println("--------------------------------------");
+	System.out.println("emp_name\temp_id\temp_salary\tgender\tposition");
+	while(res1.next()) 
+		{
+			System.out.println(res1.getString(1)+"\t"+res1.getInt(2)+"\t"+res1.getInt(3)+"\t"+res1.getString(4)+"\t"+res1.getString(5));	
+		}
+	}
+	
+	catch(Exception e)
+	{
+		System.out.println(e);
+	}
+	}
+}

@@ -1,0 +1,39 @@
+1. Login and registration
+after user logs in,
+
+Overview — all the basic info about a hotel (address, check-in and check-out time…).
+
+Accommodation offers — descriptions and prices.
+
+Additional amenities — other stuff that guests can use (Wi-Fi, A/C).
+
+Map — hotel location and its surroundings.
+
+
+2. Search box
+First things first. With a large inventory, there are 3 parameters that users can usually choose at the first:
+
+Destination (city which they are going to visit)
+hotel name
+can see available of seats or not
+
+If a user searches in the locality, let them hit ‘Find hotels near me’ and use GPS navigation. 
+
+3. view Results
+.
+
+Filters can be applied to set an affordable prices, availabilty  or city name , hotel name,  and so on.
+
+ The results offers a nice looking hotel with affordable price and then book a table.
+booking can have 2 options like instant and scheduled.
+
+5. Booking
+Lastly, all you need to do is service your customers a fast and secure payment. Provide an automatic printable booking confirmation that includes payment details (a total sum, and payment by days).
+
+This is the last step that separates the user from the reserved room. All you can do here is to provide your customers with fast and secure payment service. Consequently, this screen should include total amount with the possibility to see the payment by days.
+
+Tip: In case a user is willing to advance some sum, offer several payment options (credit card, PayPal). Hit the button!
+
+
+
+

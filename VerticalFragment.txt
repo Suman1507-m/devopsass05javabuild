@@ -1,0 +1,37 @@
+import java.sql.*;
+import java.util.*;
+class VerticalFragment{
+public static void main(String args[]){
+Scanner sc= new Scanner(System.in);
+System.out.println("Enter table name page2 :\n");
+String tname=sc.nextLine();
+
+try{  
+//step1 load the driver class  
+Class.forName("oracle.jdbc.driver.OracleDriver");  
+  
+//step2 create  the connection object  
+Connection con=DriverManager.getConnection( "jdbc:oracle:thin:@DESKTOP-QSNCN8S:1521:orcl","system","a1234");  
+  
+//step3 create the statement object  
+Statement stmt=con.createStatement();  
+
+//ResultSet rs3=stmt.executeQuery("drop table page21");
+ResultSet rs1=stmt.executeQuery("create table page21 as select company_count,month_of_creation  from "+tname);
+ResultSet rs4=stmt.executeQuery("select * from page21");
+
+while(rs4.next())
+System.out.println(rs4.getInt(1)+" "+rs4.getInt(2));
+
+ ResultSet rs11=stmt.executeQuery("drop table page22");
+    ResultSet rs22=stmt.executeQuery(" create table page22 as SELECT createdBy FROM "+tname );
+    ResultSet rs33=stmt.executeQuery("select * from page22");
+       
+    while(rs33.next())
+    System.out.println(rs33.getString(1));
+
+con.close();
+}catch(Exception e){System.out.println(e);
+}
+}
+}
